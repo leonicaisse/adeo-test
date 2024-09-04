@@ -2,11 +2,11 @@ const { getArgumentValue, serializeArguments } = require("./utils");
 
 describe("utils", () => {
   it("should serialize arguments list", () => {
-    const args = ["--filter=ry", "--test=toto", "--toast=titi"];
+    const args = ["--filter=ry", "--test=toto", "--toast"];
     const serializedArgs = [
       { name: "filter", value: "ry" },
       { name: "test", value: "toto" },
-      { name: "toast", value: "titi" },
+      { name: "toast" },
     ];
     expect(serializeArguments(args)).toStrictEqual(serializedArgs);
   });

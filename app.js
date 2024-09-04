@@ -1,10 +1,13 @@
 const { data } = require("./data");
+const { count } = require("./count");
 const { serializeArguments, getArgumentValue } = require("./utils");
 
 const main = () => {
-  const args = serializeArguments(process.argv.slice(2));
-  const filter = getArgumentValue("filter", args);
-  console.log(JSON.stringify(filterCountries(data, filter), null, 2));
+  // const args = serializeArguments(process.argv.slice(2));
+  // const filter = getArgumentValue("filter", args);
+  // console.log(JSON.stringify(filterCountries(data, filter), null, 2));
+
+  console.log(JSON.stringify(count(data), null, 2));
 };
 
 const filterCountries = (countryList, filter) => {

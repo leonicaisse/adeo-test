@@ -1,9 +1,46 @@
+const { data } = require("./data");
+const { serializeArguments, getArgumentValue } = require("./utils");
+
 const main = () => {
-  console.log("Hello world");
+  const args = serializeArguments(process.argv.slice(2));
+  const filter = getArgumentValue("filter", args);
+  console.log(JSON.stringify(filterCountries(data, filter), null, 2));
+};
+
+const filterCountries = (countryList, filter) => {
+  const filterCountryList = countryList.reduce((list, country) => {
+    const filterPeopleList = filterPeople(country.people, filter);
+    if (filterPeopleList.length) {
+      list.push({ ...country, people: filterPeopleList });
+    }
+    return list;
+  }, []);
+  return filterCountryList;
+};
+
+const filterPeople = (peopleList, filter) => {
+  const filteredPeopleList = peopleList.reduce((list, people) => {
+    const filteredAnimalList = filterAnimals(people.animals, filter);
+    if (filteredAnimalList.length) {
+      list.push({ ...people, animals: filteredAnimalList });
+    }
+    return list;
+  }, []);
+  return filteredPeopleList;
+};
+
+const filterAnimals = (animalList, filter) => {
+  const filteredAnimalList = animalList.filter((animal) =>
+    animal.name.includes(filter)
+  );
+  return filteredAnimalList;
 };
 
 main();
 
 module.exports = {
   main,
+  filterCountries,
+  filterPeople,
+  filterAnimals,
 };

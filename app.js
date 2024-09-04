@@ -3,11 +3,17 @@ const { count } = require("./count");
 const { serializeArguments, getArgumentValue } = require("./utils");
 
 const main = () => {
-  // const args = serializeArguments(process.argv.slice(2));
-  // const filter = getArgumentValue("filter", args);
-  // console.log(JSON.stringify(filterCountries(data, filter), null, 2));
+  const args = serializeArguments(process.argv.slice(2));
+  const commands = args.map((arg) => arg.name);
 
-  console.log(JSON.stringify(count(data), null, 2));
+  if (commands.includes("filter")) {
+    const filter = getArgumentValue("filter", args);
+    console.log(JSON.stringify(filterCountries(data, filter), null, 2));
+  }
+
+  if (commands.includes("count")) {
+    console.log(JSON.stringify(count(data), null, 2));
+  }
 };
 
 const filterCountries = (countryList, filter) => {

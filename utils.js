@@ -2,7 +2,7 @@ const serializeArguments = (args) => {
   return args.map((arg) => {
     arg = arg.slice(2);
     const [name, value] = arg.split("=");
-    return { name, value };
+    return { name, ...(value && { value }) };
   });
 };
 

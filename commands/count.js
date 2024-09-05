@@ -16,6 +16,8 @@ const formatPeople = (peopleList) => {
 
 const appendChildrenCount = (data, childrenKey) => {
    const { name, ...rest } = data;
+   if (!data[childrenKey])
+      throw new Error('There is no property matching the provided parameter');
    const count = data[childrenKey].length;
    return { name: `${name} [${count}]`, ...rest };
 };

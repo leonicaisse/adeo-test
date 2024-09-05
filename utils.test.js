@@ -6,7 +6,9 @@ describe('utils', () => {
          const args = [];
          expect(() => {
             serializeArguments(args);
-         }).toThrow();
+         }).toThrow(
+            'Please provide arguments, such as --count or --filter=<pattern>'
+         );
       });
       it('should serialize arguments list', () => {
          const args = ['--filter=ry', '--test=toto', '--toast'];
@@ -23,7 +25,7 @@ describe('utils', () => {
       it('should throw an error if no value is provided for the argument', () => {
          expect(() => {
             getArgumentValue('noval');
-         }).toThrow();
+         }).toThrow('There is no value for the provided argument');
       });
 
       it('should return the value of an argument', () => {

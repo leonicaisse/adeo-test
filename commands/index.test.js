@@ -1,4 +1,4 @@
-const { main } = require('./app');
+const main = require('./index');
 
 describe('main function', () => {
    const originalArgv = process.argv;
@@ -24,9 +24,10 @@ describe('main function', () => {
       expect(console.log).toHaveBeenCalled();
    });
 
-   it('should not log anything if no recognized command is provided', () => {
+   it('should throw an error if specified command is unknown', () => {
       process.argv = ['node', 'app.js', '--unknown'];
-      main();
-      expect(console.log).not.toHaveBeenCalled();
+      expect(() => {
+         main();
+      }).toThrow();
    });
 });

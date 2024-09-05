@@ -1,16 +1,16 @@
 const serializeArguments = (args) => {
-    return args.map((arg) => {
-        arg = arg.slice(2)
-        const [name, value] = arg.split('=')
-        return { name, ...(value && { value }) }
-    })
-}
+   return args.map((arg) => {
+      arg = arg.slice(2);
+      const [name, value] = arg.split('=');
+      return { name, ...(value && { value }) };
+   });
+};
 
 const getArgumentValue = (arg, args) => {
-    return args?.find((a) => a.name === arg)?.value
-}
+   return args?.find((a) => a.name === arg)?.value;
+};
 
 module.exports = {
-    serializeArguments,
-    getArgumentValue,
-}
+   serializeArguments,
+   getArgumentValue,
+};

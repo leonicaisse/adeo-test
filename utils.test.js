@@ -1,23 +1,23 @@
-const { getArgumentValue, serializeArguments } = require("./utils");
+const { getArgumentValue, serializeArguments } = require('./utils')
 
-describe("utils", () => {
-  it("should serialize arguments list", () => {
-    const args = ["--filter=ry", "--test=toto", "--toast"];
-    const serializedArgs = [
-      { name: "filter", value: "ry" },
-      { name: "test", value: "toto" },
-      { name: "toast" },
-    ];
-    expect(serializeArguments(args)).toStrictEqual(serializedArgs);
-  });
+describe('utils', () => {
+    it('should serialize arguments list', () => {
+        const args = ['--filter=ry', '--test=toto', '--toast']
+        const serializedArgs = [
+            { name: 'filter', value: 'ry' },
+            { name: 'test', value: 'toto' },
+            { name: 'toast' },
+        ]
+        expect(serializeArguments(args)).toStrictEqual(serializedArgs)
+    })
 
-  it("should return the value of an argument", () => {
-    const args = [
-      { name: "filter", value: "ry" },
-      { name: "test", value: "toto" },
-      { name: "toast", value: "titi" },
-    ];
-    const value = "ry";
-    expect(getArgumentValue("filter", args)).toBe(value);
-  });
-});
+    it('should return the value of an argument', () => {
+        const args = [
+            { name: 'filter', value: 'ry' },
+            { name: 'test', value: 'toto' },
+            { name: 'toast', value: 'titi' },
+        ]
+        const value = 'ry'
+        expect(getArgumentValue('filter', args)).toBe(value)
+    })
+})
